@@ -1,0 +1,14 @@
+.s {
+  font-size: large;
+}
+.m {
+  font-size: x-large;
+}
+.l {
+  font-size: xx-large;
+}
+.submit {
+  border-radius: 40% 0% 40%;
+  padding: 2%;
+  background-color: var(--tertiary);
+}
