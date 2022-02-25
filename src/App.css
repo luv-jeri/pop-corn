@@ -4,12 +4,13 @@
   box-sizing: border-box;
 }
 nav {
-  background-color: blanchedalmond;
+  background-color: #dff6ff;
   display: flex;
   justify-content: space-around;
-  height: 5vh;
+  height: 6vh;
   font-size: larger;
   color: aliceblue;
+  padding: 1%;
 }
 a {
   text-decoration: none;
