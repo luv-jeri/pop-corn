@@ -2,17 +2,20 @@ import "./App.css";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Card from "./pages/card";
+import { Routes, Route, Link } from "react-router-dom";
 function App() {
   return (
     <div className="App">
       <nav>
-        <a href="/login">Login</a>
-        <a href="/signup">Signup</a>
-        <a href="/card">Card</a>
+        <Link to="/login">Login</Link>
+        <Link to="/signup">Signup</Link>
+        <Link to="/card">Card</Link>
       </nav>
-      <Login />
-      <Signup />
-      <Card />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/card" element={<Card />} />
+      </Routes>
     </div>
   );
 }
