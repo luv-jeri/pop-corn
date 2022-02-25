@@ -1,20 +1,27 @@
-import "./App.css";
-import Login from "./pages/login";
-import Signup from "./pages/signup";
-import Card from "./pages/card";
-import { Routes, Route, Link } from "react-router-dom";
+import './App.css';
+import {
+  Routes,
+  Route,
+  Link,
+} from 'react-router-dom';
+import Login from './pages/login';
+import Signup from './pages/signup';
+import Navigation from './component/navigation';
+// import AuthNav from './navigation/auth.nav';
+
 function App() {
   return (
-    <div className="App">
-      <nav>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Signup</Link>
-        <Link to="/card">Card</Link>
-      </nav>
+    <div className='App'>
+      <Navigation />
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/card" element={<Card />} />
+        <Route
+          path='/login'
+          element={<Login />}
+        />
+        <Route
+          path='/signup'
+          element={<Signup />}
+        />
       </Routes>
     </div>
   );

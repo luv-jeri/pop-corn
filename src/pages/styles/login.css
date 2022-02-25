@@ -1,10 +1,7 @@
-.container {
+.page-wrapper {
   height: 100vh;
-  background-color: #051367;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
+  background-color: var(--dark);
 }
 h1 {
   color: aliceblue;
