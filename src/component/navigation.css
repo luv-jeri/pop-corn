@@ -1,7 +1,7 @@
 .nav-wrapper {
   background-color: var(--tertiary);
   color: var(--light);
-  height: 5vh;
+  height: 6vh;
 }
 
 .link-wrapper {
@@ -10,4 +10,8 @@
 
 .links {
   margin-left: 2vh;
+}
+.logo{
+  margin-top: 6px;
+  margin-left: 15px;
 }

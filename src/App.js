@@ -7,7 +7,7 @@ import {
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Navigation from './component/navigation';
-// import AuthNav from './navigation/auth.nav';
+import AuthNav from './navigation/auth.nav';
 
 function App() {
   return (

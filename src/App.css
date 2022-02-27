@@ -1,7 +1,13 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Shizuru&display=swap');* {
   margin: 0px;
   padding: 0px;
+  font-family: poppins;
+  font-weight: 600;
+  font-style: italic;
   box-sizing: border-box;
+}
+.App{
+  border: 5px solid white;
 }
 nav {
   background-color: #dff6ff;

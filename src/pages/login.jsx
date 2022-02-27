@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/login.css";
 import "../styles/index.css";
-import logo from "../logo.png";
+import logo from "../logo1.png";
 import PopInput from "../component/pop_input/PopInput";
 import { useState } from "react";
 import axios from "axios";
@@ -36,9 +36,9 @@ export default function Login() {
   };
 
   return (
-    <div className="page-wrapper flex j-sa">
+    <div className="page-wrapper flex j-sa a-c">
       <div>
-        <img src={logo} alt="logo" height={300} />
+        <img src={logo} alt="logo" height={350} />
       </div>
       <div>
         <PopInput
