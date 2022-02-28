@@ -1,4 +1,30 @@
-.s {
+.wrapper{
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.s{
+    padding: 10px 20px;
+    font-size: small;
+}
+.m{
+  padding: 10px 20px;
+  font-size: large;
+}
+.l{
+  padding: 10px 20px;
+  font-size: xx-large;
+}
+
+
+
+
+
+
+
+/* .s {
   font-size: large;
 }
 .m {
@@ -6,9 +32,18 @@
 }
 .l {
   font-size: xx-large;
-}
+} */
 .submit {
-  border-radius: 40% 0% 40%;
-  padding: 2%;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+
+  color: white;
+
+  border: 1px solid white;
+  border-radius: .5rem;
+  /* border-radius: 40% 0% 40%; */
+  /* padding: 10px 20px; */
   background-color: var(--tertiary);
 }
