@@ -3,26 +3,44 @@ import './styles/login.css';
 import '../styles/index.css';
 import logo from '../logo1.png';
 import PopInput from '../component/pop_input/PopInput';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import PopButton from '../component/pop_input/PopButton';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const login = () => {
-    const res = axios.post(
-      'http://localhost:8080/api/v1/authentication/sign_in',
-    );
+  const navigate = useNavigate();
 
-    res.then((response) => {
-      console.log(response.data.data);
-    });
+  useEffect(() => {
+    const token = Cookies.get('token');
 
-    res.catch((error) => {
-      console.log(error);
-    });
+    if (token) {
+      navigate('/home');
+    }
+  }, []);
+
+  const login = async () => {
+    try {
+      const response = await axios.post(
+        'http://localhost:8080/api/v1/authentication/sign_in',
+        {
+          email,
+          password,
+        }
+      );
+
+      Cookies.set('token', response.data.token, {
+        expires: 1,
+      });
+
+      navigate('/home');
+    } catch (e) {
+      alert(e.response.data.message);
+    }
   };
 
   return (

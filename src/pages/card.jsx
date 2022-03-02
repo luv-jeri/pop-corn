@@ -1,6 +1,6 @@
-import React from "react";
-import "./styles/login.css";
+import React from 'react';
+import './styles/login.css';
 
-export default function card() {
-  return <div className="container">card</div>;
+export default function Card() {
+  return <div className='container'>HOME</div>;
 }

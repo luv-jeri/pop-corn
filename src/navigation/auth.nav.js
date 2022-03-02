@@ -5,7 +5,6 @@ import Signup from '../pages/signup';
 const AuthNav = () => {
   return (
     <div>
-      <Route path='/' element={<Login />} />
       <Route path='/login' element={<Login />} />
       <Route
         path='/signup'
