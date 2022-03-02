@@ -1,12 +1,17 @@
 import { Routes, Route } from 'react-router-dom';
-// import AuthNav from './auth.nav';
-// import AppNav from './app.nav';
+import Login from '../pages/login';
+import Signup from './../pages/signup';
 
 const IndexNav = () => {
-  <Routes>
-    {/* <Route path='/login' element={<AuthNav />} />
-    <Route path='/signup' element={<AppNav />} /> */}
-  </Routes>;
+  return (
+    <Routes>
+      <Route path='/login' element={<Login />} />
+      <Route
+        path='/signup'
+        element={<Signup />}
+      />
+    </Routes>
+  );
 };
 
 export default IndexNav;

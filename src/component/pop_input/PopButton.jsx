@@ -1,22 +1,17 @@
-import "./PopButton.css";
-import React from "react";
+import './PopButton.css';
+import React from 'react';
 
 export default function PopButton(props) {
-  const {value} = props;
-
+  const { value, onTap, type } = props;
 
   return (
-        <div className="wrapper">
-          <button className="submit s">{value}</button>
-
-        </div>
-
-
-
-
-
-    // <div className="wrapper">
-    //   <button className="submit s">Login</button>
-    // </div>
+    <div className='wrapper'>
+      <button
+        className={`submit ${type}`}
+        onClick={onTap}
+      >
+        {value}
+      </button>
+    </div>
   );
 }

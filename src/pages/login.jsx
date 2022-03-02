@@ -8,78 +8,51 @@ import axios from 'axios';
 import PopButton from '../component/pop_input/PopButton';
 
 export default function Login() {
-	const [email, setEmail] =
-		useState('');
-	const [password, setPassword] =
-		useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-	const handleSubmit = async () => {
-		// const res = await fetch(
-		//   'http://localhost:8080/api/v1/authentication/sign_in',
-		//   {
-		//     method: 'POST',
-		//   },
-		//   {
-		//     email: email,
-		//     password: password,
-		//   }
-		// );
-		// console.log(res);
+  const login = () => {
+    const res = axios.post(
+      'http://localhost:8080/api/v1/authentication/sign_in',
+    );
 
-		const res = await axios.post(
-			'http://localhost:8080/api/v1/authentication/sign_in/hdsfjbhsdjbfg?q=hello',
-			{
-				email: email,
-				password: password,
-			}
-		);
+    res.then((response) => {
+      console.log(response.data.data);
+    });
 
-		console.log(res);
-	};
+    res.catch((error) => {
+      console.log(error);
+    });
+  };
 
-	return (
-		<div className='page-wrapper flex j-sa a-c'>
-			<div>
-				<img
-					src={logo}
-					alt='logo'
-					height={350}
-				/>
-			</div>
-			<div>
-				<PopInput
-					label='Email'
-					type='email'
-					value={email}
-					onChange={(e) =>
-						setEmail(
-							e.target
-								.value
-						)
-					}
-				/>
-				<PopInput
-					label='Password'
-					type='password'
-					value={password}
-					onChange={(e) =>
-						setPassword(
-							e.target
-								.value
-						)
-					}
-				/>
-				{/* <button onClick={handleSubmit}>
-          Login
-        </button> */}
-				<PopButton
-					className=''
-          value= {'Login'}
-					onClick={
-						handleSubmit
-					}
-				/>
-			</div>
-		</div>
-	);
+  return (
+    <div className='page-wrapper flex j-sa a-c'>
+      <div>
+        <img src={logo} alt='logo' height={350} />
+      </div>
+      <div>
+        <PopInput
+          label='Email'
+          type='email'
+          value={email}
+          onChange={(e) =>
+            setEmail(e.target.value)
+          }
+        />
+        <PopInput
+          label='Password'
+          type='password'
+          value={password}
+          onChange={(e) =>
+            setPassword(e.target.value)
+          }
+        />
+        <PopButton
+          value={'Login 🎯'}
+          onTap={login}
+          type='s'
+        />
+      </div>
+    </div>
+  );
 }
