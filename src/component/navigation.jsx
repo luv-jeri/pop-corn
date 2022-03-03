@@ -2,12 +2,26 @@ import './navigation.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../logo1.png';
+import Cookie from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import PopButton from './pop_input/PopButton';
 
-export default function navigation() {
+export default function Navigation() {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] =
+    useState(false);
+
+  useEffect(() => {
+    if (Cookie.get('token')) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
     <nav className='nav-wrapper flex j-sb a-c'>
       <div>
-        <img 
+        <img
           className='logo'
           src={logo}
           alt='LOGO'
@@ -16,8 +30,26 @@ export default function navigation() {
         />
       </div>
       <div className='link-wrapper flex f-1 '>
-        <Link className="links" to='/login'>Login</Link>
-        <Link  className="links" to='/signup'>Signup</Link>
+        {!isLoggedIn ? (
+          <>
+            <Link className='links' to='/login'>
+              Login
+            </Link>
+            <Link className='links' to='/signup'>
+              Signup
+            </Link>{' '}
+          </>
+        ) : (
+          <PopButton
+            value='Logout'
+            onTap={() => {
+              Cookie.remove('token');
+              setIsLoggedIn(false);
+              navigate('/login');
+            }}
+            type='s'
+          />
+        )}
       </div>
     </nav>
   );

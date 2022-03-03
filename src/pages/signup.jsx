@@ -2,21 +2,52 @@ import React from 'react';
 import './styles/login.css';
 import '../styles/index.css';
 import Logo from '../logo1.png';
-import Login from './login';
 import PopInput from '../component/pop_input/PopInput';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PopButton from '../component/pop_input/PopButton';
-import { Route, Routes } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Cookie from 'js-cookie';
 
 export default function Signup() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] =
     useState('');
 
-  const signup = () => {
-    console.log('SIGNUP !');
+  useEffect(() => {
+    if (Cookie.get('token')) {
+      navigate('/');
+    }
+  }, []);
+
+  const signup = async () => {
+    if (password !== confirmPassword) {
+      alert('Password does not match');
+      setConfirmPassword('');
+      setPassword('');
+      return;
+    }
+    try {
+      const res = await axios.post(
+        'http://localhost:8080/api/v1/authentication/sign_up',
+        {
+          email,
+          name,
+          password,
+          passwordConfirm: confirmPassword,
+        }
+      );
+
+      Cookie.set('token', res.data.token);
+
+      navigate('/');
+    } catch (e) {
+      alert(e.response.data.message);
+      console.log('error', e);
+    }
   };
 
   return (

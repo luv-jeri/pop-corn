@@ -1,10 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
-import Card from '../pages/card';
+import Home from '../pages/Home';
+
 
 const AppNav = () => {
-  <Routes>
-    <Route path='/card' element={<Card />} />
-  </Routes>;
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+    </Routes>
+  );
 };
 
 export default AppNav;
