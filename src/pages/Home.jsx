@@ -7,6 +7,7 @@ import look_cookie from '../utils/look_cookie';
 import { useNavigate } from 'react-router-dom';
 import PopCard from './../component/pop_card/pop_card';
 import PopLoading from './../component/pop_loading/pop_loading';
+import PopSearch from '../component/pop_search/pop_search';
 
 export default function Home() {
   const [movies, setMovie] = useState([]);
@@ -37,14 +38,20 @@ export default function Home() {
     });
   }, [navigate]);
 
+
   return (
     <div className='container'>
+     <PopSearch
+     movies={movies}
+      setMovie={setMovie}
+     />
       {loading ? (
         <PopLoading />
       ) : (
-        movies.map((movie) => {
+        movies.map((movie, index) => {
           return (
             <PopCard
+              key={index}
               name={movie.name}
               description={movie.description}
               language={movie.language}
