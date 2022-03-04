@@ -1,62 +1,20 @@
 import React from 'react';
 import './styles/login.css';
-import Cookies from 'js-cookie';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import look_cookie from '../utils/look_cookie';
-import { useNavigate } from 'react-router-dom';
-import PopCard from './../component/pop_card/pop_card';
-import PopLoading from './../component/pop_loading/pop_loading';
 
-export default function Home() {
-  const [movies, setMovie] = useState([]);
+import { useState } from 'react';
+import Child from './../component/pop_card/pop_card';
 
-  const [loading, setLoading] = useState(true);
-
-  const navigate = useNavigate();
-
-  const getMovies = async () => {
-    const res = await axios.get(
-      'http://localhost:8080/api/v1/movie',
-      {
-        headers: {
-          Authorization: `Bearer ${Cookies.get(
-            'token'
-          )}`,
-        },
-      }
-    );
-
-    setMovie(res.data.data);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    look_cookie('token', getMovies, () => {
-      navigate('/login');
-    });
-  }, [navigate]);
+export default function Parent() {
+  const [data, setData] = useState('Update me');
 
   return (
-    <div className='container'>
-      {loading ? (
-        <PopLoading />
-      ) : (
-        movies.map((movie) => {
-          return (
-            <PopCard
-              name={movie.name}
-              description={movie.description}
-              language={movie.language}
-              rating={movie.rating}
-              title={movie.title}
-              poster={movie.poster}
-              genre={movie.genre}
-              director={movie.director}
-            />
-          );
-        })
-      )}
+    <div className='pop-container'>
+      <h1>I am Parent - {data}</h1>
+
+      <Child
+        someGoodProp={data}
+        setter={setData}
+      />
     </div>
   );
 }

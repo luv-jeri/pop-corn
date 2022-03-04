@@ -2,7 +2,7 @@ import './PopButton.css';
 import React from 'react';
 
 export default function PopButton(props) {
-  const { value, onTap, type } = props;
+  const { hapla, onTap, type } = props;
 
   return (
     <div className='wrapper'>
@@ -10,7 +10,7 @@ export default function PopButton(props) {
         className={`submit ${type}`}
         onClick={onTap}
       >
-        {value}
+        {hapla}
       </button>
     </div>
   );
