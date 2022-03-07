@@ -1,16 +1,32 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import { useEffect, useState } from 'react';
 
 export default function PopSearch(props) {
-  const { movies, setMovie } = props;
+  const [name, setName] = useState('');
 
-  const search = (name) => {
-    const movie = movies.find(
-      (movie) => movie.title === name
+  const { setMovie } = props;
+
+  const search = async () => {
+    const res = await axios.get(
+      `http://localhost:8080/api/v1/movie?title[regex]=${name}`,
+      {
+        headers: {
+          Authorization: `Bearer ${Cookies.get(
+            'token'
+          )}`,
+        },
+      }
     );
-    if (movie) {
-      setMovie([movie]);
-    }
+
+  
+    setMovie(res.data.data);
   };
+
+  useEffect(() => {
+    search();
+  }, [name]);
 
   return (
     <div>
@@ -29,7 +45,7 @@ export default function PopSearch(props) {
           backgroundColor: '#27f5f2',
         }}
         onChange={(e) => {
-          search(e.target.value);
+          setName(e.target.value);
         }}
       />
     </div>

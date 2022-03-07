@@ -9,6 +9,7 @@ import PopCard from './../component/pop_card/pop_card';
 import PopLoading from './../component/pop_loading/pop_loading';
 import PopSearch from '../component/pop_search/pop_search';
 
+
 export default function Home() {
   const [movies, setMovie] = useState([]);
 
@@ -32,19 +33,18 @@ export default function Home() {
     setLoading(false);
   };
 
+
   useEffect(() => {
     look_cookie('token', getMovies, () => {
       navigate('/login');
     });
   }, [navigate]);
 
-
   return (
     <div className='container'>
-     <PopSearch
-     movies={movies}
-      setMovie={setMovie}
-     />
+      <PopSearch
+        setMovie={setMovie}
+      />
       {loading ? (
         <PopLoading />
       ) : (
