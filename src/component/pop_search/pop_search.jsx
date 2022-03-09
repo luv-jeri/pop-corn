@@ -9,18 +9,16 @@ export default function PopSearch(props) {
   const { setMovie } = props;
 
   const search = async () => {
-    const res = await axios.get(
-      `http://localhost:8080/api/v1/movie?title[regex]=${name}`,
-      {
-        headers: {
-          Authorization: `Bearer ${Cookies.get(
-            'token'
-          )}`,
-        },
-      }
-    );
+    const res = await axios({
+      method: 'GET',
+      url: `http://localhost:8080/api/v1/movie?title[regex]=${name}`,
+      headers: {
+        Authorization: `Bearer ${Cookies.get(
+          'token'
+        )}`,
+      },
+    });
 
-  
     setMovie(res.data.data);
   };
 

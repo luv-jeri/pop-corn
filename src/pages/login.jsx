@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import './styles/login.css';
 import '../styles/index.css';
@@ -6,7 +7,7 @@ import logo from '../logo1.png';
 import PopInput from '../component/pop_input/PopInput';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import PopButton from '../component/pop_input/PopButton';
+import PopButton from '../component/pop_button/PopButton';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 

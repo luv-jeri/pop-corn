@@ -1,6 +1,7 @@
 .pop-input-wrapper {
     color: var(--light);
     font-size: 2rem;
+    margin: 10px;
 }
 .pop-input {
   background-color: antiquewhite;

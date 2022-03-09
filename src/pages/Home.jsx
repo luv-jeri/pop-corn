@@ -9,7 +9,6 @@ import PopCard from './../component/pop_card/pop_card';
 import PopLoading from './../component/pop_loading/pop_loading';
 import PopSearch from '../component/pop_search/pop_search';
 
-
 export default function Home() {
   const [movies, setMovie] = useState([]);
 
@@ -18,6 +17,15 @@ export default function Home() {
   const navigate = useNavigate();
 
   const getMovies = async () => {
+    // axios({
+    //   method: 'post',
+    //   url: 'http://localhost:8080/api/v1/movie',
+    //   data: {
+    //     title: '',
+    //     year: '',
+    //   },
+    // });
+
     const res = await axios.get(
       'http://localhost:8080/api/v1/movie',
       {
@@ -33,7 +41,6 @@ export default function Home() {
     setLoading(false);
   };
 
-
   useEffect(() => {
     look_cookie('token', getMovies, () => {
       navigate('/login');
@@ -42,9 +49,7 @@ export default function Home() {
 
   return (
     <div className='container'>
-      <PopSearch
-        setMovie={setMovie}
-      />
+      <PopSearch setMovie={setMovie} />
       {loading ? (
         <PopLoading />
       ) : (

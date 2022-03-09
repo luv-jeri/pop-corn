@@ -1,10 +1,18 @@
-import "./PopInput.css"
+import './PopInput.css';
+
 import React from 'react';
 
 export default function PopInput(props) {
-  const { label, type, value, onChange } = props;
+  const {
+    label,
+    type,
+    value,
+    onChange,
+    myStyle,
+  } = props;
+
   return (
-    <div className="pop-input-wrapper">
+    <div className='pop-input-wrapper'>
       <label className='pop-input-label'>
         {label}
       </label>
@@ -13,6 +21,7 @@ export default function PopInput(props) {
         type={type}
         value={value}
         onChange={onChange}
+        style={myStyle}
       />
     </div>
   );

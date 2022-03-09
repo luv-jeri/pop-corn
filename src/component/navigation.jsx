@@ -5,7 +5,7 @@ import logo from '../logo1.png';
 import Cookie from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import PopButton from './pop_input/PopButton';
+import PopButton from './pop_button/PopButton';
 
 export default function Navigation() {
   const navigate = useNavigate();
