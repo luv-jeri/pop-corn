@@ -17,24 +17,17 @@ export default function Home() {
   const navigate = useNavigate();
 
   const getMovies = async () => {
-    // axios({
-    //   method: 'post',
-    //   url: 'http://localhost:8080/api/v1/movie',
-    //   data: {
-    //     title: '',
-    //     year: '',
-    //   },
-    // });
+    axios({
+      method: 'post',
+      url: 'movie',
+      data: {
+        title: '',
+        year: '',
+      },
+    });
 
     const res = await axios.get(
-      'http://localhost:8080/api/v1/movie',
-      {
-        headers: {
-          Authorization: `Bearer ${Cookies.get(
-            'token'
-          )}`,
-        },
-      }
+      'movie'
     );
 
     setMovie(res.data.data);

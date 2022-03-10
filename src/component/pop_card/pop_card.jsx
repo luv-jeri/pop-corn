@@ -16,7 +16,7 @@ export default function PopCard(props) {
     <div>
       <div className='pop-card'>
         <div className='card-image'>
-          <img src={poster} alt='poster' />
+          <img src={poster} alt='poster' height={100} width={100} />
           <span className='card-title'>
             {name}
           </span>

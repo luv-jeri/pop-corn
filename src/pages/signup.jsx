@@ -32,7 +32,7 @@ export default function Signup() {
     }
     try {
       const res = await axios.post(
-        'http://localhost:8080/api/v1/authentication/sign_up',
+        'authentication/sign_up',
         {
           email,
           name,
