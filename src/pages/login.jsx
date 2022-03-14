@@ -5,13 +5,20 @@ import '../styles/index.css';
 import '../component/pop_card/pop_card.css';
 import logo from '../logo1.png';
 import PopInput from '../component/pop_input/PopInput';
-import { useState, useEffect } from 'react';
+import {
+  useState,
+  useEffect,
+  useContext,
+} from 'react';
 import axios from 'axios';
 import PopButton from '../component/pop_button/PopButton';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import { IsLogContext } from '../context/isLog';
 
 export default function Login() {
+  const [IsLog, setIsLog] =
+    useContext(IsLogContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -34,7 +41,7 @@ export default function Login() {
           password,
         }
       );
-      
+
       // Saving token to cookie
       Cookies.set('token', response.data.token, {
         expires: 1,
@@ -44,7 +51,7 @@ export default function Login() {
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${response.data.token}`;
-
+      setIsLog(true);
       navigate('/');
     } catch (e) {
       alert(e.response.data.message);

@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 import logo from '../logo1.png';
 import Cookie from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import PopButton from './pop_button/PopButton';
+import { IsLogContext } from '../context/isLog';
 
 export default function Navigation() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] =
-    useState(false);
+    useContext(IsLogContext);
 
   useEffect(() => {
     if (Cookie.get('token')) {

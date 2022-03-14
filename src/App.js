@@ -3,6 +3,7 @@ import Navigation from './component/navigation';
 import IndexNav from './navigation/index.nav';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { IsLog } from './context/isLog';
 
 function App() {
   axios.defaults.headers.common[
@@ -13,8 +14,10 @@ function App() {
 
   return (
     <div className='App'>
-      <Navigation />
-      <IndexNav />
+      <IsLog>
+        <Navigation />
+        <IndexNav />
+      </IsLog>
     </div>
   );
 }
