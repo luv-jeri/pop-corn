@@ -51,6 +51,7 @@ export default function Login() {
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${response.data.token}`;
+      //Setting global variable for isLoggedIn
       setIsLog(true);
       navigate('/');
     } catch (e) {
