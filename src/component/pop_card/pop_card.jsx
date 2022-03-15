@@ -1,7 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 export default function PopCard(props) {
+
   const navigate = useNavigate();
+
   const {
     name,
     description,
@@ -18,7 +21,7 @@ export default function PopCard(props) {
       <div
         className='pop-card'
         onClick={() => {
-          navigate(`/profile/${name}`);
+          navigate(`/profile`);
         }}
       >
         <div className='card-image'>
