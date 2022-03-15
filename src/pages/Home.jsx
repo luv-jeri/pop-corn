@@ -20,6 +20,7 @@ export default function Home() {
     axios({
       method: 'post',
       url: 'movie',
+
       data: {
         title: '',
         year: '',
@@ -31,6 +32,8 @@ export default function Home() {
     );
 
     setMovie(res.data.data);
+
+    console.log(res.data.data[0]);
     setLoading(false);
   };
 

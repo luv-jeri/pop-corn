@@ -7,11 +7,14 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useContext } from 'react';
 import PopButton from './pop_button/PopButton';
 import { IsLogContext } from '../context/isLog';
+import { UserContext } from '../context/user';
 
 export default function Navigation() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] =
     useContext(IsLogContext);
+
+  const [user] = useContext(UserContext);
 
   useEffect(() => {
     if (Cookie.get('token')) {
@@ -30,6 +33,7 @@ export default function Navigation() {
           // width={50}
         />
       </div>
+
       <div className='link-wrapper flex f-1 '>
         {!isLoggedIn ? (
           <>
@@ -41,15 +45,20 @@ export default function Navigation() {
             </Link>{' '}
           </>
         ) : (
-          <PopButton
-            value='Logout'
-            onTap={() => {
-              Cookie.remove('token');
-              setIsLoggedIn(false);
-              navigate('/login');
-            }}
-            type='s'
-          />
+          <>
+            <PopButton
+              value='Logout'
+              onTap={() => {
+                Cookie.remove('token');
+                setIsLoggedIn(false);
+                navigate('/login');
+              }}
+              type='s'
+            />
+            <Link className='links' to='/profile'>
+              {user.name}
+            </Link>
+          </>
         )}
       </div>
     </nav>

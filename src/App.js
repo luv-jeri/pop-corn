@@ -4,20 +4,24 @@ import IndexNav from './navigation/index.nav';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { IsLog } from './context/isLog';
+import { UserContextProvider } from './context/user';
 
 function App() {
   axios.defaults.headers.common[
     'Authorization'
-  ] = `Bearer ${Cookies.get('token')}`;
+  ] = `${Cookies.get('token')}`;
+
   axios.defaults.baseURL =
     'http://localhost:8080/api/v1/';
 
   return (
     <div className='App'>
-      <IsLog>
-        <Navigation />
-        <IndexNav />
-      </IsLog>
+      <UserContextProvider>
+        <IsLog>
+          <Navigation />
+          <IndexNav />
+        </IsLog>
+      </UserContextProvider>
     </div>
   );
 }
