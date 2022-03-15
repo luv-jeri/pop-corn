@@ -15,10 +15,13 @@ import PopButton from '../component/pop_button/PopButton';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { IsLogContext } from '../context/isLog';
+import { UserContext } from '../context/user';
 
 export default function Login() {
   const [IsLog, setIsLog] =
     useContext(IsLogContext);
+
+  const [user, setUser] = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -42,19 +45,23 @@ export default function Login() {
         }
       );
 
-      // Saving token to cookie
+      setUser(response.data.data);
+
+      // Creating/ Save token to cookie
       Cookies.set('token', response.data.token, {
-        expires: 1,
+        expires: 2,
       });
 
       // Setting default header for all requests to API
       axios.defaults.headers.common[
         'Authorization'
-      ] = `Bearer ${response.data.token}`;
+      ] = `${response.data.token}`;
+
       //Setting global variable for isLoggedIn
       setIsLog(true);
       navigate('/');
     } catch (e) {
+      console.log(e.response);
       alert(e.response.data.message);
     }
   };
