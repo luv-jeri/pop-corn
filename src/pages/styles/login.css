@@ -3,11 +3,13 @@
   width: 100%;
   background-color: var(--dark);
 }
-h1 {
+.page-wrapper h1 {
   color: aliceblue;
   text-align: center;
 }
-img{
+
+.page-wrapper img{
   border: 2px solid white;
   border-radius: 50%;
 }
+ 

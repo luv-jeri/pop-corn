@@ -1,4 +1,3 @@
-import './App.css';
 import Navigation from './component/navigation';
 import IndexNav from './navigation/index.nav';
 import axios from 'axios';
@@ -15,7 +14,7 @@ function App() {
     'http://localhost:8080/api/v1/';
 
   return (
-    <div className='App'>
+    <div className='container'>
       <UserContextProvider>
         <IsLog>
           <Navigation />
