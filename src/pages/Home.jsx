@@ -8,6 +8,21 @@ import { useNavigate } from 'react-router-dom';
 import PopCard from './../component/pop_card/pop_card';
 import PopLoading from './../component/pop_loading/pop_loading';
 import PopSearch from '../component/pop_search/pop_search';
+import PopModel from '../component/pop_model/PopModel';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+Modal.setAppElement('#root');
 
 export default function Home() {
   const [movies, setMovie] = useState([]);
@@ -27,9 +42,7 @@ export default function Home() {
       },
     });
 
-    const res = await axios.get(
-      'movie'
-    );
+    const res = await axios.get('movie');
 
     setMovie(res.data.data);
 
@@ -43,9 +56,47 @@ export default function Home() {
     });
   }, [navigate]);
 
+  const [show, setShow] = useState(false);
+
+  function openModal() {
+    setShow(true);
+  }
+
+  function afterOpenModal() {}
+
+  function closeModal() {
+    setShow(false);
+  }
+
   return (
     <div className='container'>
+      {/* {show ? (
+        <PopModel
+          onClose={() => {
+            setShow(false);
+          }}
+        />
+      ) : null} */}
+      <Modal
+        isOpen={show}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel='Example Modal'
+      >
+        <h1>I AM A MODAL</h1>
+      </Modal>
+
       <PopSearch setMovie={setMovie} />
+      {!show ? (
+        <button
+          onClick={() => {
+            setShow(!show);
+          }}
+        >
+          Add Movie
+        </button>
+      ) : null}
       {loading ? (
         <PopLoading />
       ) : (

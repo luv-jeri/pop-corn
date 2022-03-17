@@ -1,0 +1,9 @@
+.wrap {
+  position: fixed;
+  height: 80%;
+  width: 80%;
+  background-color: var(--dark);
+  top: 10%;
+  left: 10%;
+  overflow: scroll;
+}
