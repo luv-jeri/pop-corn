@@ -16,14 +16,19 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { IsLogContext } from '../context/isLog';
 import { UserContext } from '../context/user';
+import useLocal from '../hooks/useLocal';
 
 export default function Login() {
   const [IsLog, setIsLog] =
     useContext(IsLogContext);
 
   const [user, setUser] = useContext(UserContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+  const [email, setEmail] = useLocal('', 'email');
+  const [password, setPassword] = useLocal(
+    '',
+    'password'
+  );
 
   const navigate = useNavigate();
 

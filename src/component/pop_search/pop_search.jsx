@@ -1,12 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
 
 export default function PopSearch(props) {
   const [name, setName] = useState('');
 
   const { setMovie } = props;
+
+  const debounce = (func, delay) => {
+    return () => {
+      setTimeout(() => {
+        func();
+      }, 1000);
+    };
+  };
+
+  useEffect(() => {
+    const de = debounce(search, 1000);
+    de();
+  }, [name]);
 
   const search = async () => {
     const res = await axios({
@@ -16,10 +28,6 @@ export default function PopSearch(props) {
 
     setMovie(res.data.data);
   };
-
-  useEffect(() => {
-    search();
-  }, [name]);
 
   return (
     <div>
